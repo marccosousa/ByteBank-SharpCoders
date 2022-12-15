@@ -8,7 +8,6 @@ namespace ByteBank
         {
             int option;
             List<Conta> contas = new List<Conta>();
-            int i = 0;
             do
             {
                 ShowMenu();
@@ -18,19 +17,7 @@ namespace ByteBank
                 switch (option)
                 {
                     case 1:
-                        Console.WriteLine("Opção [1]: ");
-                        Console.WriteLine($"Digite os dados da conta #{i + 1} :");
-                        Console.Write("Titular: ");
-                        string nome = Console.ReadLine();
-                        Console.Write("Digite o CPF: ");
-                        string cpf = Console.ReadLine();
-                        Console.Write("Digite o saldo: ");
-                        double saldo = double.Parse(Console.ReadLine());
-                        Console.Write("Digite o ID desejado: ");
-                        int id = int.Parse(Console.ReadLine());
-                        contas.Add(new Conta(nome, cpf, saldo, id));
-                        Console.WriteLine("Parabéns, bem-vindo!");
-                        i++;
+                        AdicionarContas(contas);
                         break;
 
                     case 2:
@@ -64,6 +51,21 @@ namespace ByteBank
             Console.Write("[X] - Digite a opção desejada: ");
         }
 
+        static void AdicionarContas(List<Conta> contas)
+        {
+            Console.WriteLine("Opção [1]: ");
+            Console.WriteLine($"Digite os dados da nova conta:");
+            Console.Write("Titular: ");
+            string nome = Console.ReadLine();
+            Console.Write("Digite o CPF: ");
+            string cpf = Console.ReadLine();
+            Console.Write("Digite o saldo: ");
+            double saldo = double.Parse(Console.ReadLine());
+            Console.Write("Digite o ID desejado: ");
+            int id = int.Parse(Console.ReadLine());
+            contas.Add(new Conta(nome, cpf, saldo, id));
+            Console.WriteLine("Parabéns, bem-vindo!");
+        }
         static void MostrarContas(List<Conta> contas)
         {
             foreach (Conta c in contas)
@@ -72,6 +74,7 @@ namespace ByteBank
                 Console.WriteLine();
             }
         }
+
     }
 }
 
