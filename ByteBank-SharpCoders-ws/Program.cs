@@ -31,16 +31,16 @@ namespace ByteBank
 
                     case 3:
                         Console.WriteLine("Opção [3]: ");
-                        MostrarContas(contas); 
+                        MostrarContas(contas);
                         break;
                     case 4:
                         Console.WriteLine("Opção [4]: ");
                         DetalhesDaConta(contas);
-                        break; 
+                        break;
                     case 5:
                         Console.WriteLine("Opção [5]: ");
                         Console.WriteLine("Total armazenado no banco: R$" + TotalNoBanco(contas).ToString("F2"));
-                        break; 
+                        break;
 
                 }
                 Console.WriteLine("--------------------");
@@ -116,19 +116,19 @@ namespace ByteBank
                 {
                     Console.WriteLine();
                     Console.WriteLine("Detalhes da conta: ");
-                    Console.WriteLine(obj.ToString()); 
+                    Console.WriteLine(obj.ToString());
                 }
             }
         }
 
         static double TotalNoBanco(List<Conta> contas)
         {
-            double soma = 0; 
+            double soma = 0;
             foreach (Conta obj in contas)
             {
-                soma += obj.Saldo; 
+                soma += obj.Saldo;
             }
-            return soma; 
+            return soma;
         }
 
     }
