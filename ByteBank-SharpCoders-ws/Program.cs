@@ -43,11 +43,7 @@ namespace ByteBank
 
                     case 3:
                         Console.WriteLine("Opção [3]: ");
-                        foreach (Conta c in contas)
-                        {
-                            Console.WriteLine(c.ToString());
-                            Console.WriteLine();
-                        }
+                        MostrarContas(contas); 
                         break;
 
                 }
@@ -68,6 +64,14 @@ namespace ByteBank
             Console.Write("[X] - Digite a opção desejada: ");
         }
 
+        static void MostrarContas(List<Conta> contas)
+        {
+            foreach (Conta c in contas)
+            {
+                Console.WriteLine(c.ToString());
+                Console.WriteLine();
+            }
+        }
     }
 }
 

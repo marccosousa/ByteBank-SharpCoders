@@ -1,0 +1,15 @@
+C:\Users\Marcola\Documents\marco-dev\ByteBank-SharpCoders-ws\ByteBank-SharpCoders-ws\bin\Debug\net6.0\ByteBank-SharpCoders-ws.exe
+C:\Users\Marcola\Documents\marco-dev\ByteBank-SharpCoders-ws\ByteBank-SharpCoders-ws\bin\Debug\net6.0\ByteBank-SharpCoders-ws.deps.json
+C:\Users\Marcola\Documents\marco-dev\ByteBank-SharpCoders-ws\ByteBank-SharpCoders-ws\bin\Debug\net6.0\ByteBank-SharpCoders-ws.runtimeconfig.json
+C:\Users\Marcola\Documents\marco-dev\ByteBank-SharpCoders-ws\ByteBank-SharpCoders-ws\bin\Debug\net6.0\ByteBank-SharpCoders-ws.dll
+C:\Users\Marcola\Documents\marco-dev\ByteBank-SharpCoders-ws\ByteBank-SharpCoders-ws\bin\Debug\net6.0\ByteBank-SharpCoders-ws.pdb
+C:\Users\Marcola\Documents\marco-dev\ByteBank-SharpCoders-ws\ByteBank-SharpCoders-ws\obj\Debug\net6.0\ByteBank-SharpCoders-ws.csproj.AssemblyReference.cache
+C:\Users\Marcola\Documents\marco-dev\ByteBank-SharpCoders-ws\ByteBank-SharpCoders-ws\obj\Debug\net6.0\ByteBank-SharpCoders-ws.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Marcola\Documents\marco-dev\ByteBank-SharpCoders-ws\ByteBank-SharpCoders-ws\obj\Debug\net6.0\ByteBank-SharpCoders-ws.AssemblyInfoInputs.cache
+C:\Users\Marcola\Documents\marco-dev\ByteBank-SharpCoders-ws\ByteBank-SharpCoders-ws\obj\Debug\net6.0\ByteBank-SharpCoders-ws.AssemblyInfo.cs
+C:\Users\Marcola\Documents\marco-dev\ByteBank-SharpCoders-ws\ByteBank-SharpCoders-ws\obj\Debug\net6.0\ByteBank-SharpCoders-ws.csproj.CoreCompileInputs.cache
+C:\Users\Marcola\Documents\marco-dev\ByteBank-SharpCoders-ws\ByteBank-SharpCoders-ws\obj\Debug\net6.0\ByteBank-SharpCoders-ws.dll
+C:\Users\Marcola\Documents\marco-dev\ByteBank-SharpCoders-ws\ByteBank-SharpCoders-ws\obj\Debug\net6.0\refint\ByteBank-SharpCoders-ws.dll
+C:\Users\Marcola\Documents\marco-dev\ByteBank-SharpCoders-ws\ByteBank-SharpCoders-ws\obj\Debug\net6.0\ByteBank-SharpCoders-ws.pdb
+C:\Users\Marcola\Documents\marco-dev\ByteBank-SharpCoders-ws\ByteBank-SharpCoders-ws\obj\Debug\net6.0\ByteBank-SharpCoders-ws.genruntimeconfig.cache
+C:\Users\Marcola\Documents\marco-dev\ByteBank-SharpCoders-ws\ByteBank-SharpCoders-ws\obj\Debug\net6.0\ref\ByteBank-SharpCoders-ws.dll
