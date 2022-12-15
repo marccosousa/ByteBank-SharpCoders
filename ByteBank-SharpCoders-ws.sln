@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33103.184
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ByteBank-SharpCoders-ws", "ByteBank-SharpCoders-ws\ByteBank-SharpCoders-ws.csproj", "{BA3ED59E-DDE6-485E-A8DD-634F5B10A1EC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BA3ED59E-DDE6-485E-A8DD-634F5B10A1EC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BA3ED59E-DDE6-485E-A8DD-634F5B10A1EC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BA3ED59E-DDE6-485E-A8DD-634F5B10A1EC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BA3ED59E-DDE6-485E-A8DD-634F5B10A1EC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C1EE85D9-76FE-46CA-8146-14B4DEBD3AE1}
+	EndGlobalSection
+EndGlobal
