@@ -15,18 +15,16 @@ namespace ByteBank
             {
                 ShowMenu();
                 option = int.Parse(Console.ReadLine());
-                Console.WriteLine("--------------------");
+                Console.Clear();
 
                 switch (option)
                 {
                     case 1:
-                        Console.Clear();
                         Console.WriteLine("Opção [1]: ");
                         AdicionarConta(contas);
                         break;
 
                     case 2:
-                        Console.Clear();
                         Console.WriteLine("Opção [2]: ");
                         RemoverConta(contas);
                         Console.WriteLine("Lista atualizada: ");
@@ -35,19 +33,16 @@ namespace ByteBank
                         break;
 
                     case 3:
-                        Console.Clear();
                         Console.WriteLine("Opção [3]: ");
                         MostrarContas(contas);
                         break;
                     case 4:
-                        Console.Clear();
                         Console.WriteLine("Opção [4]: ");
                         DetalhesDaConta(contas);
                         break;
                     case 5:
-                        Console.Clear();
                         Console.WriteLine("Opção [5]: ");
-                        Console.WriteLine("Total armazenado no banco: R$" + TotalNoBanco(contas).ToString("F2"));
+                        Console.WriteLine($"Total armazenado no banco: R${TotalNoBanco(contas):F2}");
                         break;
                     case 6:            
                         do
@@ -65,10 +60,8 @@ namespace ByteBank
                             }
                         } while (option != 4);
                         break;
-
                 }
                 Console.WriteLine("--------------------");
-
             } while (option != 0);
         }
 
@@ -84,7 +77,7 @@ namespace ByteBank
             Console.WriteLine("[0] - Sair do menu");
             Console.Write("[X] - Digite a opção desejada: ");
         }
-
+        
         static void AdicionarConta(List<Conta> contas)
         {
             Console.WriteLine($"Digite os dados da nova conta:");
@@ -99,6 +92,7 @@ namespace ByteBank
             contas.Add(new Conta(nome, cpf, saldo, id));
             Console.WriteLine("Parabéns, bem-vindo!");
         }
+        
         static void RemoverConta(List<Conta> contas)
         {
             Console.Write("Qual o ID da conta que você quer deletar? #");
@@ -114,7 +108,8 @@ namespace ByteBank
             }
             Console.WriteLine($"Conta: ID#{c.Id} Removida com sucesso.");
             Console.WriteLine();
-        }
+        }        
+        
         static void MostrarContas(List<Conta> contas)
         {
             foreach (Conta obj in contas)
@@ -123,7 +118,7 @@ namespace ByteBank
                 Console.WriteLine();
             }
         }
-
+        
         static void DetalhesDaConta(List<Conta> contas)
         {
             Console.Write("Qual o ID da conta que você quer consultar? #");
@@ -145,7 +140,7 @@ namespace ByteBank
                 }
             }
         }
-
+        
         static double TotalNoBanco(List<Conta> contas)
         {
             double soma = 0;
@@ -169,6 +164,7 @@ namespace ByteBank
             Console.WriteLine("[4] - Voltar para o menu principal");
             Console.Write("[X] - Digite a opção desejada: ");
         }
+        
         static void Depositando(List<Conta> contas)
         {
             Console.WriteLine("Qual o ID da conta que você quer depositar: #");
@@ -183,9 +179,10 @@ namespace ByteBank
             Console.Write("Qual o valor do depósito: R$");
             double valor = double.Parse(Console.ReadLine());
             c.Deposito(valor);
-            Console.WriteLine($"Depósito de R${valor} efetuado com sucesso! ");
+            Console.WriteLine($"Depósito de R${valor:F2} efetuado com sucesso! ");
+            Console.WriteLine(c.ToString());
         }
-
+        
         static void Sacando(List<Conta> contas)
         {
             Console.WriteLine("Qual o ID da conta que você quer fazer o saque: #");
@@ -200,7 +197,9 @@ namespace ByteBank
             Console.Write("Qual o valor do saque: R$");
             double valor = double.Parse(Console.ReadLine());
             c.Saque(valor);
-            Console.WriteLine($"Saque de R${valor} efetuado com sucesso! ");
+            Console.WriteLine($"Saque de R${valor:F2} efetuado com sucesso! ");
+            Console.WriteLine(c.ToString());
+
         }
 
     }
