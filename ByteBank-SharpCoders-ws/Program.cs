@@ -188,7 +188,7 @@ namespace ByteBank
 
         static void Sacando(List<Conta> contas)
         {
-            Console.WriteLine("Qual o ID da conta que você quer depositar: #");
+            Console.WriteLine("Qual o ID da conta que você quer fazer o saque: #");
             int procurarId = int.Parse(Console.ReadLine());
             Conta c = contas.Find(x => x.Id == procurarId);
             while (c == null)
@@ -197,7 +197,7 @@ namespace ByteBank
                 procurarId = int.Parse(Console.ReadLine());
                 c = contas.Find(x => x.Id == procurarId);
             }
-            Console.Write("Qual o valor do depósito: R$");
+            Console.Write("Qual o valor do saque: R$");
             double valor = double.Parse(Console.ReadLine());
             c.Saque(valor);
             Console.WriteLine($"Saque de R${valor} efetuado com sucesso! ");
