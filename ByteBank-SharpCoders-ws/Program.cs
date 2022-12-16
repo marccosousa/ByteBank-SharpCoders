@@ -1,6 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Drawing;
-using System.Runtime.Serialization;
 
 namespace ByteBank
 {
@@ -44,11 +42,12 @@ namespace ByteBank
                         Console.WriteLine("Opção [5]: ");
                         Console.WriteLine($"Total armazenado no banco: R${TotalNoBanco(contas):F2}");
                         break;
-                    case 6:            
+                    case 6:
                         do
                         {
                             ShowMenuSecundario();
                             option = int.Parse(Console.ReadLine());
+                            Console.WriteLine();
                             switch (option)
                             {
                                 case 1:
@@ -167,7 +166,7 @@ namespace ByteBank
         
         static void Depositando(List<Conta> contas)
         {
-            Console.WriteLine("Qual o ID da conta que você quer depositar: #");
+            Console.Write("Qual o ID da conta que você quer depositar: #");
             int procurarId = int.Parse(Console.ReadLine());
             Conta c = contas.Find(x => x.Id == procurarId);
             while (c == null)
@@ -180,12 +179,14 @@ namespace ByteBank
             double valor = double.Parse(Console.ReadLine());
             c.Deposito(valor);
             Console.WriteLine($"Depósito de R${valor:F2} efetuado com sucesso! ");
+            Console.WriteLine();
             Console.WriteLine(c.ToString());
+            Console.WriteLine();
         }
         
         static void Sacando(List<Conta> contas)
         {
-            Console.WriteLine("Qual o ID da conta que você quer fazer o saque: #");
+            Console.Write("Qual o ID da conta que você quer fazer o saque: #");
             int procurarId = int.Parse(Console.ReadLine());
             Conta c = contas.Find(x => x.Id == procurarId);
             while (c == null)
@@ -198,7 +199,9 @@ namespace ByteBank
             double valor = double.Parse(Console.ReadLine());
             c.Saque(valor);
             Console.WriteLine($"Saque de R${valor:F2} efetuado com sucesso! ");
+            Console.WriteLine();
             Console.WriteLine(c.ToString());
+            Console.WriteLine();
 
         }
 
