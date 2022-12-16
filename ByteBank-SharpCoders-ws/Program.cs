@@ -9,6 +9,7 @@ namespace ByteBank
         {
             int option;
             List<Conta> contas = new List<Conta>();
+
             do
             {
                 ShowMenu();
@@ -18,28 +19,74 @@ namespace ByteBank
                 switch (option)
                 {
                     case 1:
+                        Console.Clear();
                         Console.WriteLine("Opção [1]: ");
                         AdicionarConta(contas);
                         break;
 
                     case 2:
+                        Console.Clear();
                         Console.WriteLine("Opção [2]: ");
                         RemoverConta(contas);
                         Console.WriteLine("Lista atualizada: ");
+                        Console.WriteLine();
                         MostrarContas(contas);
                         break;
 
                     case 3:
+                        Console.Clear();
                         Console.WriteLine("Opção [3]: ");
                         MostrarContas(contas);
                         break;
                     case 4:
+                        Console.Clear();
                         Console.WriteLine("Opção [4]: ");
                         DetalhesDaConta(contas);
                         break;
                     case 5:
+                        Console.Clear();
                         Console.WriteLine("Opção [5]: ");
                         Console.WriteLine("Total armazenado no banco: R$" + TotalNoBanco(contas).ToString("F2"));
+                        break;
+                    case 6:            
+                        do
+                        {
+                            ShowMenuSecundario();
+                            option = int.Parse(Console.ReadLine());
+                            switch (option)
+                            {
+                                case 1:
+                                    Console.WriteLine("Qual o ID da conta que você quer depositar: #");
+                                    int procurarId = int.Parse(Console.ReadLine());
+                                    Conta c = contas.Find(x => x.Id == procurarId);
+                                    while (c == null)
+                                    {
+                                        Console.Write("Conta inválida, digite novamente o ID: #");
+                                        procurarId = int.Parse(Console.ReadLine());
+                                        c = contas.Find(x => x.Id == procurarId);
+                                    }
+                                    Console.Write("Qual o valor do depósito: R$");
+                                    double valor = double.Parse(Console.ReadLine());
+                                    c.Deposito(valor);
+                                    Console.WriteLine($"Depósito de R${valor} efetuado com sucesso! ");
+                                    break;
+                                case 2:
+                                    Console.WriteLine("Qual o ID da conta que você quer depositar: #");
+                                    procurarId = int.Parse(Console.ReadLine());
+                                    c = contas.Find(x => x.Id == procurarId);
+                                    while (c == null)
+                                    {
+                                        Console.Write("Conta inválida, digite novamente o ID: #");
+                                        procurarId = int.Parse(Console.ReadLine());
+                                        c = contas.Find(x => x.Id == procurarId);
+                                    }
+                                    Console.Write("Qual o valor do depósito: R$");
+                                    valor = double.Parse(Console.ReadLine());
+                                    c.Saque(valor);
+                                    Console.WriteLine($"Saque de R${valor} efetuado com sucesso! ");
+                                    break;
+                            }
+                        } while (option != 4);
                         break;
 
                 }
@@ -57,6 +104,16 @@ namespace ByteBank
             Console.WriteLine("[5] - Total armazenado no banco");
             Console.WriteLine("[6] - Manipular conta");
             Console.WriteLine("[0] - Sair do menu");
+            Console.Write("[X] - Digite a opção desejada: ");
+        }
+
+        static void ShowMenuSecundario()
+        {
+            Console.WriteLine("Opção [6]: ");
+            Console.WriteLine("[1] - Depósito");
+            Console.WriteLine("[2] - Saque");
+            Console.WriteLine("[3] - Transferencia");
+            Console.WriteLine("[4] - Voltar para o menu principal");
             Console.Write("[X] - Digite a opção desejada: ");
         }
 
@@ -87,7 +144,7 @@ namespace ByteBank
                 c = contas.Find(x => x.Id == procurarId);
                 contas.Remove(c);
             }
-            Console.WriteLine($"{c} <-- REMOVIDA!");
+            Console.WriteLine($"Conta: ID#{c.Id} Removida com sucesso.");
             Console.WriteLine();
         }
         static void MostrarContas(List<Conta> contas)

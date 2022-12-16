@@ -19,9 +19,19 @@
             Id = id;
         }
 
+        public void Deposito(double valor)
+        {
+            Saldo += valor;
+        }
+
+        public void Saque(double valor)
+        {
+            Saldo -= valor;
+        }
+
         public override string ToString()
         {
-            return $"Conta ID#{Id}\nTitular: {Titular}, CPF: {Cpf}, Saldo: {Saldo:F2}";
+            return $"Conta ID#{Id}\nTitular: {Titular}\nCPF: {Cpf}\nSaldo: {Saldo:F2}";
         }
     }
 }
