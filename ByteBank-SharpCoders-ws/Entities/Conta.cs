@@ -1,4 +1,4 @@
-﻿namespace ByteBank
+﻿namespace ByteBank_SharpCoders_ws.Entities
 {
     class Conta
     {
