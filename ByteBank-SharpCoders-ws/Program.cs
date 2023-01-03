@@ -66,7 +66,7 @@ namespace ByteBank
             Console.WriteLine("Obrigado por utilizar o ByteBank! Até logo!");
         }
 
-        //Início principal
+        //Início menu principal
         static void ShowMenu()
         {
             Console.WriteLine("[1] - Inserir nova conta");
@@ -123,9 +123,9 @@ namespace ByteBank
         
         static void DetalhesDaConta(List<Conta> contas)
         {
+            Console.WriteLine("Contas: ");
             foreach (Conta obj in contas)
-            {
-                Console.WriteLine("Contas: ");
+            {              
                 Console.WriteLine("#" + obj.NumConta.ToString());
             }
             Console.WriteLine();
@@ -215,6 +215,8 @@ namespace ByteBank
             Console.WriteLine();
 
         }
+
+        // Fim menu secundário
 
     }
 }
