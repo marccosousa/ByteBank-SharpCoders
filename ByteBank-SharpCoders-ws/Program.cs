@@ -225,21 +225,49 @@ namespace ByteBank
         static void Transferindo (List<Conta> contas)
         {
             MostrarContas(contas);
-            Console.WriteLine("Digite o número da conta de origem: ");
+            Console.Write("Digite o número da conta de origem: #");
             int procurarConta = int.Parse(Console.ReadLine());
             Conta contaOrigem = contas.Find(x => x.NumConta == procurarConta);
-            Console.WriteLine("Digite o número da conta de Destino: ");
+            Console.WriteLine();
+            while (contaOrigem == null)
+            {
+                Console.Write("Conta inválida, digite novamente o número da conta: #");
+                procurarConta = int.Parse(Console.ReadLine());
+                contaOrigem = contas.Find(x => x.NumConta == procurarConta);
+            }
+            Console.Write("Digite o número da conta de destino: #");
             procurarConta = int.Parse(Console.ReadLine());
             Conta contaDestino = contas.Find(x => x.NumConta == procurarConta);
-            Console.WriteLine("Digite o valor: ");
+            Console.WriteLine();
+            while (contaDestino == null)
+            {
+                Console.Write("Conta inválida, digite novamente o número da conta: #");
+                procurarConta = int.Parse(Console.ReadLine());
+                contaDestino = contas.Find(x => x.NumConta == procurarConta);
+            }
+            while (contaDestino == contaOrigem)
+            {
+                Console.Write("A Conta de destino não pode ser a mesma da origem.\nDigite novamente o número da conta: #");
+                procurarConta = int.Parse(Console.ReadLine());
+                contaDestino = contas.Find(x => x.NumConta == procurarConta);
+                if (contaDestino == null)
+                {
+                    Console.Write("Conta inválida, digite novamente o número da conta: #");
+                    procurarConta = int.Parse(Console.ReadLine());
+                    contaDestino = contas.Find(x => x.NumConta == procurarConta);
+                }
+            }
+            Console.Write("Digite o valor: R$");
             double valorTransferencia = double.Parse(Console.ReadLine());
             contaDestino.Transferencia(contaOrigem, contaDestino, valorTransferencia);
             Console.WriteLine("Transferência realizada com sucesso!");
+            Console.WriteLine();
             Console.WriteLine($"CONTA ORIGEM: Número #{contaOrigem.NumConta}\nTitular: {contaOrigem.Titular}");
             Console.WriteLine();
             Console.WriteLine($"CONTA DESTINO: Número #{contaDestino.NumConta}\nTitular: {contaDestino.Titular}");
             Console.WriteLine();
             Console.WriteLine($"VALOR: {valorTransferencia:F2}");
+            Console.WriteLine();
         }
 
         // Fim menu secundário
