@@ -89,9 +89,9 @@ namespace ByteBank
             double saldo = double.Parse(Console.ReadLine());
             Random numAleatorioParaConta = new Random();
             int numConta = numAleatorioParaConta.Next(1000, 9000);
-            Console.WriteLine($"O número da sua conta será:{numConta}");
+            Console.WriteLine($"O número da sua conta será: #{numConta}");
             contas.Add(new Conta(nome, cpf, saldo, numConta));
-            Console.WriteLine("Parabéns, bem-vindo ao ByteBank!");
+            Console.WriteLine($"Parabéns {nome}!!, bem-vindo ao ByteBank!");
         }
         
         static void RemoverConta(List<Conta> contas)
@@ -102,12 +102,12 @@ namespace ByteBank
             contas.Remove(c);
             while (c == null)
             {
-                Console.Write("Conta inválida, digite novamente o ID: #");
+                Console.Write("Conta inválida, digite novamente o número: #");
                 procurarConta = int.Parse(Console.ReadLine());
                 c = contas.Find(x => x.NumConta == procurarConta);
                 contas.Remove(c);
             }
-            Console.WriteLine($"Conta: ID#{c.NumConta} Removida com sucesso.");
+            Console.WriteLine($"Conta número #{c.NumConta} Removida com sucesso.");
             Console.WriteLine();
         }        
         
@@ -180,7 +180,7 @@ namespace ByteBank
             Console.Write("Qual o valor do depósito: R$");
             double valor = double.Parse(Console.ReadLine());
             c.Deposito(valor);
-            Console.WriteLine($"Depósito de R${valor:F2} efetuado com sucesso! ");
+            Console.WriteLine($"Depósito de R${valor:F2} efetuado com sucesso para {c.Titular}! ");
             Console.WriteLine();
             Console.WriteLine(c.ToString());
             Console.WriteLine();
@@ -200,7 +200,7 @@ namespace ByteBank
             Console.Write("Qual o valor do saque: R$");
             double valor = double.Parse(Console.ReadLine());
             c.Saque(valor);
-            Console.WriteLine($"Saque de R${valor:F2} efetuado com sucesso! ");
+            Console.WriteLine($"Saque de R${valor:F2} efetuado com sucesso da conta de {c.Titular} ");
             Console.WriteLine();
             Console.WriteLine(c.ToString());
             Console.WriteLine();
