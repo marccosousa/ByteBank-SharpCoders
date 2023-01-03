@@ -29,10 +29,10 @@
             Saldo -= valor;
         }
 
-        public void Transferencia(Conta conta1, Conta conta2, double valor)
+        public void Transferencia(Conta contaOrigem, Conta contaDestino, double valor)
         {
-            conta1.Saldo -= valor;
-            conta2.Saldo += valor; 
+            contaOrigem.Saldo -= valor;
+            contaDestino.Saldo += valor; 
         }
 
         public override string ToString()
