@@ -29,6 +29,12 @@
             Saldo -= valor;
         }
 
+        public void Transferencia(Conta conta1, Conta conta2, double valor)
+        {
+            conta1.Saldo -= valor;
+            conta2.Saldo += valor; 
+        }
+
         public override string ToString()
         {
             return $"Conta Número #{NumConta}\nTitular: {Titular}\nCPF: {Cpf}\nSaldo: {Saldo:F2}";

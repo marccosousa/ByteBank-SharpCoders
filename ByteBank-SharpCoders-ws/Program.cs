@@ -53,11 +53,17 @@ namespace ByteBank
                             switch (option)
                             {
                                 case 1:
+                                    Console.WriteLine("Depósito: ");
                                     Depositando(contas); 
                                     break;
                                 case 2:
+                                    Console.WriteLine("Saque: ");
                                     Sacando(contas);
                                     break;
+                                case 3:
+                                    Console.WriteLine("Transferência: ");
+                                    Transferindo(contas);
+                                    break; 
                             }
                         } while (option != 4);
                         break;
@@ -214,6 +220,26 @@ namespace ByteBank
             Console.WriteLine(c.ToString());
             Console.WriteLine();
 
+        }
+
+        static void Transferindo (List<Conta> contas)
+        {
+            MostrarContas(contas);
+            Console.WriteLine("Digite o número da conta de origem: ");
+            int procurarConta = int.Parse(Console.ReadLine());
+            Conta contaOrigem = contas.Find(x => x.NumConta == procurarConta);
+            Console.WriteLine("Digite o número da conta de Destino: ");
+            procurarConta = int.Parse(Console.ReadLine());
+            Conta contaDestino = contas.Find(x => x.NumConta == procurarConta);
+            Console.WriteLine("Digite o valor: ");
+            double valorTransferencia = double.Parse(Console.ReadLine());
+            contaDestino.Transferencia(contaOrigem, contaDestino, valorTransferencia);
+            Console.WriteLine("Transferência realizada com sucesso!");
+            Console.WriteLine($"CONTA ORIGEM: Número #{contaOrigem.NumConta}\nTitular: {contaOrigem.Titular}");
+            Console.WriteLine();
+            Console.WriteLine($"CONTA DESTINO: Número #{contaDestino.NumConta}\nTitular: {contaDestino.Titular}");
+            Console.WriteLine();
+            Console.WriteLine($"VALOR: {valorTransferencia:F2}");
         }
 
         // Fim menu secundário
