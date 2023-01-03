@@ -1,4 +1,5 @@
 ﻿using ByteBank_SharpCoders_ws.Entities;
+using System;
 
 namespace ByteBank
 {
@@ -86,26 +87,27 @@ namespace ByteBank
             string cpf = Console.ReadLine();
             Console.Write("Digite o saldo: ");
             double saldo = double.Parse(Console.ReadLine());
-            Console.Write("Digite o ID desejado: ");
-            int id = int.Parse(Console.ReadLine());
-            contas.Add(new Conta(nome, cpf, saldo, id));
-            Console.WriteLine("Parabéns, bem-vindo!");
+            Random numAleatorioParaConta = new Random();
+            int numConta = numAleatorioParaConta.Next(1000, 9000);
+            Console.WriteLine($"O número da sua conta será:{numConta}");
+            contas.Add(new Conta(nome, cpf, saldo, numConta));
+            Console.WriteLine("Parabéns, bem-vindo ao ByteBank!");
         }
         
         static void RemoverConta(List<Conta> contas)
         {
-            Console.Write("Qual o ID da conta que você quer deletar? #");
-            int procurarId = int.Parse(Console.ReadLine());
-            Conta c = contas.Find(x => x.Id == procurarId);
+            Console.Write("Qual o número da conta que você quer deletar? #");
+            int procurarConta = int.Parse(Console.ReadLine());
+            Conta c = contas.Find(x => x.NumConta == procurarConta);
             contas.Remove(c);
             while (c == null)
             {
                 Console.Write("Conta inválida, digite novamente o ID: #");
-                procurarId = int.Parse(Console.ReadLine());
-                c = contas.Find(x => x.Id == procurarId);
+                procurarConta = int.Parse(Console.ReadLine());
+                c = contas.Find(x => x.NumConta == procurarConta);
                 contas.Remove(c);
             }
-            Console.WriteLine($"Conta: ID#{c.Id} Removida com sucesso.");
+            Console.WriteLine($"Conta: ID#{c.NumConta} Removida com sucesso.");
             Console.WriteLine();
         }        
         
@@ -120,14 +122,14 @@ namespace ByteBank
         
         static void DetalhesDaConta(List<Conta> contas)
         {
-            Console.Write("Qual o ID da conta que você quer consultar? #");
-            int procurarId = int.Parse(Console.ReadLine());
-            Conta c = contas.Find(x => x.Id == procurarId);
+            Console.Write("Qual o número da conta que você quer consultar? #");
+            int procurarConta = int.Parse(Console.ReadLine());
+            Conta c = contas.Find(x => x.NumConta == procurarConta);
             while (c == null)
             {
-                Console.Write("Conta inválida, digite novamente o ID: #");
-                procurarId = int.Parse(Console.ReadLine());
-                c = contas.Find(x => x.Id == procurarId);
+                Console.Write("Conta inválida, digite novamente o número: #");
+                procurarConta = int.Parse(Console.ReadLine());
+                c = contas.Find(x => x.NumConta == procurarConta);
             }
             foreach (Conta obj in contas)
             {
@@ -166,14 +168,14 @@ namespace ByteBank
         
         static void Depositando(List<Conta> contas)
         {
-            Console.Write("Qual o ID da conta que você quer depositar: #");
-            int procurarId = int.Parse(Console.ReadLine());
-            Conta c = contas.Find(x => x.Id == procurarId);
+            Console.Write("Qual o número da conta que você quer depositar: #");
+            int procurarConta = int.Parse(Console.ReadLine());
+            Conta c = contas.Find(x => x.NumConta == procurarConta);
             while (c == null)
             {
                 Console.Write("Conta inválida, digite novamente o ID: #");
-                procurarId = int.Parse(Console.ReadLine());
-                c = contas.Find(x => x.Id == procurarId);
+                procurarConta = int.Parse(Console.ReadLine());
+                c = contas.Find(x => x.NumConta == procurarConta);
             }
             Console.Write("Qual o valor do depósito: R$");
             double valor = double.Parse(Console.ReadLine());
@@ -186,14 +188,14 @@ namespace ByteBank
         
         static void Sacando(List<Conta> contas)
         {
-            Console.Write("Qual o ID da conta que você quer fazer o saque: #");
-            int procurarId = int.Parse(Console.ReadLine());
-            Conta c = contas.Find(x => x.Id == procurarId);
+            Console.Write("Qual o número da conta que você quer fazer o saque: #");
+            int procurarConta = int.Parse(Console.ReadLine());
+            Conta c = contas.Find(x => x.NumConta == procurarConta);
             while (c == null)
             {
                 Console.Write("Conta inválida, digite novamente o ID: #");
-                procurarId = int.Parse(Console.ReadLine());
-                c = contas.Find(x => x.Id == procurarId);
+                procurarConta = int.Parse(Console.ReadLine());
+                c = contas.Find(x => x.NumConta == procurarConta);
             }
             Console.Write("Qual o valor do saque: R$");
             double valor = double.Parse(Console.ReadLine());

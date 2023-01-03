@@ -5,18 +5,18 @@
         public string Titular { get; set; }
         public string Cpf { get; set; }
         public double Saldo { get; private set; }
-        public int Id { get; set; }
+        public int NumConta { get; set; }
 
         public Conta()
         {
         }
 
-        public Conta(string titular, string cpf, double saldo, int id)
+        public Conta(string titular, string cpf, double saldo, int numConta)
         {
             Titular = titular;
             Cpf = cpf;
             Saldo = saldo;
-            Id = id;
+            NumConta = numConta;
         }
 
         public void Deposito(double valor)
@@ -31,7 +31,7 @@
 
         public override string ToString()
         {
-            return $"Conta ID#{Id}\nTitular: {Titular}\nCPF: {Cpf}\nSaldo: {Saldo:F2}";
+            return $"Conta Número #{NumConta}\nTitular: {Titular}\nCPF: {Cpf}\nSaldo: {Saldo:F2}";
         }
     }
 }
