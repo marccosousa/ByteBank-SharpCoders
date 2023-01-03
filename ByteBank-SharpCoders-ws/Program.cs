@@ -25,6 +25,7 @@ namespace ByteBank
 
                     case 2:
                         Console.WriteLine("Opção [2]: ");
+                        MostrarContas(contas);
                         RemoverConta(contas);
                         Console.WriteLine("Lista atualizada: ");
                         Console.WriteLine();
@@ -48,7 +49,7 @@ namespace ByteBank
                         {
                             ShowMenuSecundario();
                             option = int.Parse(Console.ReadLine());
-                            Console.WriteLine();
+                            Console.Clear();
                             switch (option)
                             {
                                 case 1:
@@ -60,9 +61,9 @@ namespace ByteBank
                             }
                         } while (option != 4);
                         break;
-                }
-                Console.WriteLine("--------------------");
+                }            
             } while (option != 0);
+            Console.WriteLine("Obrigado por utilizar o ByteBank! Até logo!");
         }
 
         //Início principal
@@ -122,6 +123,12 @@ namespace ByteBank
         
         static void DetalhesDaConta(List<Conta> contas)
         {
+            foreach (Conta obj in contas)
+            {
+                Console.WriteLine("Contas: ");
+                Console.WriteLine("#" + obj.NumConta.ToString());
+            }
+            Console.WriteLine();
             Console.Write("Qual o número da conta que você quer consultar? #");
             int procurarConta = int.Parse(Console.ReadLine());
             Conta c = contas.Find(x => x.NumConta == procurarConta);
@@ -168,6 +175,7 @@ namespace ByteBank
         
         static void Depositando(List<Conta> contas)
         {
+            MostrarContas(contas);
             Console.Write("Qual o número da conta que você quer depositar: #");
             int procurarConta = int.Parse(Console.ReadLine());
             Conta c = contas.Find(x => x.NumConta == procurarConta);
@@ -188,6 +196,7 @@ namespace ByteBank
         
         static void Sacando(List<Conta> contas)
         {
+            MostrarContas(contas);
             Console.Write("Qual o número da conta que você quer fazer o saque: #");
             int procurarConta = int.Parse(Console.ReadLine());
             Conta c = contas.Find(x => x.NumConta == procurarConta);
