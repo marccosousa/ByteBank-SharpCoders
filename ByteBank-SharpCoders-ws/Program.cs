@@ -76,8 +76,7 @@ namespace ByteBank
                             Console.ReadKey();
                         } while (option != 4);
                         break;
-                }
-                
+                }               
                 Console.WriteLine("Digite qualquer tecla para voltar ao menu anterior...");
                 Console.ReadKey();
             } while (option != 0);
