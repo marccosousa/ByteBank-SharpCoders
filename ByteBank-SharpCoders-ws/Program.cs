@@ -1,5 +1,6 @@
 ﻿using ByteBank_SharpCoders_ws.Entities;
 using System;
+using System.Diagnostics.Metrics;
 
 namespace ByteBank
 {
@@ -45,8 +46,11 @@ namespace ByteBank
                         Console.WriteLine($"Total armazenado no banco: R${TotalNoBanco(contas):F2}");
                         break;
                     case 6:
+                        Conta contaLogada = Login(contas);
                         do
                         {
+                            Console.WriteLine($"Olá, {contaLogada.Titular}! O que deseja fazer hoje?");
+                            Console.WriteLine();
                             ShowMenuSecundario();
                             option = int.Parse(Console.ReadLine());
                             Console.Clear();
@@ -54,15 +58,15 @@ namespace ByteBank
                             {
                                 case 1:
                                     Console.WriteLine("Depósito: ");
-                                    Depositando(contas); 
+                                    Depositando(contas, contaLogada); 
                                     break;
                                 case 2:
                                     Console.WriteLine("Saque: ");
-                                    Sacando(contas);
+                                    Sacando(contas, contaLogada);
                                     break;
                                 case 3:
                                     Console.WriteLine("Transferência: ");
-                                    Transferindo(contas);
+                                    Transferindo(contas, contaLogada);
                                     break; 
                             }
                         } while (option != 4);
@@ -92,7 +96,7 @@ namespace ByteBank
             string nome = Console.ReadLine();
             Console.Write("Digite o CPF: ");
             string cpf = Console.ReadLine();
-            Console.WriteLine("Crie uma senha: ");
+            Console.Write("Crie uma senha: ");
             string senha = Console.ReadLine();
             Console.Write("Digite o saldo: ");
             double saldo = double.Parse(Console.ReadLine());
@@ -171,6 +175,31 @@ namespace ByteBank
 
         // Início menu secundário
 
+        static Conta Login(List<Conta> contas)
+        { 
+            foreach (Conta obj in contas)
+            {
+                Console.WriteLine($"Número da conta: #{obj.NumConta}\nTitular:{obj.Titular}");
+                Console.WriteLine();
+            }
+            Conta c; 
+            do
+            {
+                Console.WriteLine("Digite o número da conta que você quer manipular: ");
+                int numContaLogin = int.Parse(Console.ReadLine());
+                Console.WriteLine("Digite a sua senha: ");
+                string senhaLogin = Console.ReadLine();
+                c = contas.Find(x => x.NumConta == numContaLogin && x.Senha == senhaLogin);
+                if (c == null)
+                {
+                    Console.WriteLine("Número da conta ou senha inválidos. Tente novamente.");
+                    Console.WriteLine();
+                }
+            } while (c == null); 
+            return c; // Retorna a conta que o usuário se logou. 
+        }
+
+
         static void ShowMenuSecundario()
         {
             Console.WriteLine("Opção [6]: ");
@@ -180,8 +209,8 @@ namespace ByteBank
             Console.WriteLine("[4] - Voltar para o menu principal");
             Console.Write("[X] - Digite a opção desejada: ");
         }
-        
-        static void Depositando(List<Conta> contas)
+
+        static void Depositando(List<Conta> contas, Conta contaLogada)
         {
             MostrarContas(contas);
             Console.Write("Qual o número da conta que você quer depositar: #");
@@ -202,7 +231,7 @@ namespace ByteBank
             Console.WriteLine();
         }
         
-        static void Sacando(List<Conta> contas)
+        static void Sacando(List<Conta> contas, Conta contaLogada)
         {
             MostrarContas(contas);
             Console.Write("Qual o número da conta que você quer fazer o saque: #");
@@ -224,7 +253,7 @@ namespace ByteBank
 
         }
 
-        static void Transferindo (List<Conta> contas)
+        static void Transferindo (List<Conta> contas, Conta contaLogada)
         {
             MostrarContas(contas);
             Console.Write("Digite o número da conta de origem: #");
