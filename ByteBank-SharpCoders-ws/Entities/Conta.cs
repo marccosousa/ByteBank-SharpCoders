@@ -4,6 +4,7 @@
     {
         public string Titular { get; set; }
         public string Cpf { get; set; }
+        public string Senha { get; private set; }
         public double Saldo { get; private set; }
         public int NumConta { get; set; }
 
@@ -11,10 +12,11 @@
         {
         }
 
-        public Conta(string titular, string cpf, double saldo, int numConta)
+        public Conta(string titular, string cpf, string senha, double saldo, int numConta)
         {
             Titular = titular;
             Cpf = cpf;
+            Senha = senha;
             Saldo = saldo;
             NumConta = numConta;
         }

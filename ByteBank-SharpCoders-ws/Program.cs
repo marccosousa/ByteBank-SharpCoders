@@ -92,13 +92,15 @@ namespace ByteBank
             string nome = Console.ReadLine();
             Console.Write("Digite o CPF: ");
             string cpf = Console.ReadLine();
+            Console.WriteLine("Crie uma senha: ");
+            string senha = Console.ReadLine();
             Console.Write("Digite o saldo: ");
             double saldo = double.Parse(Console.ReadLine());
             Random numAleatorioParaConta = new Random();
             int numConta = numAleatorioParaConta.Next(1000, 9000);
             Console.WriteLine($"O número da sua conta será: #{numConta}");
-            contas.Add(new Conta(nome, cpf, saldo, numConta));
-            Console.WriteLine($"Parabéns {nome}!!, bem-vindo ao ByteBank!");
+            contas.Add(new Conta(nome, cpf, senha, saldo, numConta));
+            Console.WriteLine($"Parabéns {nome}!! Bem-vindo ao ByteBank!");
         }
         
         static void RemoverConta(List<Conta> contas)
