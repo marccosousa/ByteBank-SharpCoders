@@ -13,6 +13,7 @@ namespace ByteBank
 
             do
             {
+                Console.Clear(); 
                 ShowMenu();
                 option = int.Parse(Console.ReadLine());
                 Console.Clear();
@@ -49,29 +50,36 @@ namespace ByteBank
                         Conta contaLogada = Login(contas);
                         do
                         {
-                            Console.WriteLine($"Olá, {contaLogada.Titular}! O que deseja fazer hoje?");
+                            Console.Clear();
+                            Console.WriteLine(contaLogada);
+                            Console.WriteLine($"O que vamos fazer hoje, {contaLogada.Titular}?");
                             Console.WriteLine();
                             ShowMenuSecundario();
                             option = int.Parse(Console.ReadLine());
-                            Console.Clear();
+                            Console.WriteLine();
                             switch (option)
                             {
                                 case 1:
                                     Console.WriteLine("Depósito: ");
-                                    Depositando(contas, contaLogada); 
+                                    Depositando(contaLogada); 
                                     break;
                                 case 2:
                                     Console.WriteLine("Saque: ");
-                                    Sacando(contas, contaLogada);
+                                    Sacando(contaLogada);
                                     break;
                                 case 3:
                                     Console.WriteLine("Transferência: ");
                                     Transferindo(contas, contaLogada);
                                     break; 
                             }
+                            Console.WriteLine("Digite qualquer tecla para voltar ao menu anterior...");
+                            Console.ReadKey();
                         } while (option != 4);
                         break;
-                }            
+                }
+                
+                Console.WriteLine("Digite qualquer tecla para voltar ao menu anterior...");
+                Console.ReadKey();
             } while (option != 0);
             Console.WriteLine("Obrigado por utilizar o ByteBank! Até logo!");
         }
@@ -199,7 +207,6 @@ namespace ByteBank
             return c; // Retorna a conta que o usuário se logou. 
         }
 
-
         static void ShowMenuSecundario()
         {
             Console.WriteLine("Opção [6]: ");
@@ -210,64 +217,33 @@ namespace ByteBank
             Console.Write("[X] - Digite a opção desejada: ");
         }
 
-        static void Depositando(List<Conta> contas, Conta contaLogada)
+        static void Depositando(Conta contaLogada)
         {
-            MostrarContas(contas);
-            Console.Write("Qual o número da conta que você quer depositar: #");
-            int procurarConta = int.Parse(Console.ReadLine());
-            Conta c = contas.Find(x => x.NumConta == procurarConta);
-            while (c == null)
-            {
-                Console.Write("Conta inválida, digite novamente o ID: #");
-                procurarConta = int.Parse(Console.ReadLine());
-                c = contas.Find(x => x.NumConta == procurarConta);
-            }
             Console.Write("Qual o valor do depósito: R$");
             double valor = double.Parse(Console.ReadLine());
-            c.Deposito(valor);
-            Console.WriteLine($"Depósito de R${valor:F2} efetuado com sucesso para {c.Titular}! ");
-            Console.WriteLine();
-            Console.WriteLine(c.ToString());
-            Console.WriteLine();
+            contaLogada.Deposito(valor);
+            Console.WriteLine($"Depósito de R${valor:F2} efetuado com sucesso para {contaLogada.Titular}! ");
         }
         
-        static void Sacando(List<Conta> contas, Conta contaLogada)
+        static void Sacando(Conta contaLogada)
         {
-            MostrarContas(contas);
-            Console.Write("Qual o número da conta que você quer fazer o saque: #");
-            int procurarConta = int.Parse(Console.ReadLine());
-            Conta c = contas.Find(x => x.NumConta == procurarConta);
-            while (c == null)
-            {
-                Console.Write("Conta inválida, digite novamente o ID: #");
-                procurarConta = int.Parse(Console.ReadLine());
-                c = contas.Find(x => x.NumConta == procurarConta);
-            }
             Console.Write("Qual o valor do saque: R$");
             double valor = double.Parse(Console.ReadLine());
-            c.Saque(valor);
-            Console.WriteLine($"Saque de R${valor:F2} efetuado com sucesso da conta de {c.Titular} ");
-            Console.WriteLine();
-            Console.WriteLine(c.ToString());
-            Console.WriteLine();
-
+            contaLogada.Saque(valor);
+            Console.WriteLine($"Saque de R${valor:F2} efetuado com sucesso de {contaLogada.Titular}");
         }
 
         static void Transferindo (List<Conta> contas, Conta contaLogada)
         {
-            MostrarContas(contas);
-            Console.Write("Digite o número da conta de origem: #");
-            int procurarConta = int.Parse(Console.ReadLine());
-            Conta contaOrigem = contas.Find(x => x.NumConta == procurarConta);
+            Conta contaOrigem = contaLogada;
             Console.WriteLine();
-            while (contaOrigem == null)
+            foreach (Conta obj in contas)
             {
-                Console.Write("Conta inválida, digite novamente o número da conta: #");
-                procurarConta = int.Parse(Console.ReadLine());
-                contaOrigem = contas.Find(x => x.NumConta == procurarConta);
+                Console.WriteLine($"Número da conta: #{obj.NumConta}\nTitular:{obj.Titular}");
+                Console.WriteLine();
             }
             Console.Write("Digite o número da conta de destino: #");
-            procurarConta = int.Parse(Console.ReadLine());
+            int procurarConta = int.Parse(Console.ReadLine());
             Conta contaDestino = contas.Find(x => x.NumConta == procurarConta);
             Console.WriteLine();
             while (contaDestino == null)
