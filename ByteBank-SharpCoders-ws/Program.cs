@@ -105,7 +105,7 @@ namespace ByteBank
             string cpf = Console.ReadLine();
             Console.Write("Crie uma senha: ");
             string senha = Console.ReadLine();
-            Console.Write("Digite o saldo: ");
+            Console.Write("Digite o depósito inicial: ");
             double saldo = double.Parse(Console.ReadLine());
             Random numAleatorioParaConta = new Random();
             int numConta = numAleatorioParaConta.Next(1000, 9000);
