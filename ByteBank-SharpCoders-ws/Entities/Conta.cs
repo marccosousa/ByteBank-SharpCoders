@@ -2,11 +2,11 @@
 {
     class Conta
     {
-        public string Titular { get; set; }
-        public string Cpf { get; set; }
+        public string Titular { get; private set; }
+        public string Cpf { get; private set; }
         public string Senha { get; private set; }
         public double Saldo { get; private set; }
-        public int NumConta { get; set; }
+        public int NumConta { get; private set; }
 
         public Conta()
         {
