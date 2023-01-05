@@ -94,6 +94,9 @@ namespace ByteBank
                             }
 
                         } while (option != 4);
+                        Console.WriteLine("--------------- V O C Ê  D E S L O G O U --------------");
+                        Console.WriteLine("Digite qualquer tecla para voltar ao menu principal...");
+                        Console.ReadKey();
                         break;
                 }
             } while (option != 0);
