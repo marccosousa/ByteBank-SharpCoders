@@ -23,33 +23,43 @@ namespace ByteBank
                 switch (option)
                 {
                     case 1:
-                        Console.WriteLine("Opção [1]: ");
+                        Console.WriteLine();
+                        Console.WriteLine("--------------- N O V A  C O N T A ---------------");
+                        Console.WriteLine();
                         AdicionarConta(contas);
                         MenuAnterior();
                         break;
 
                     case 2:
-                        Console.WriteLine("Opção [2]: ");
+                        Console.WriteLine();
+                        Console.WriteLine("--------------- R E M O V E R  C O N T A ---------------");
+                        Console.WriteLine();
                         MostrarContas(contas);
                         RemoverConta(contas);
-                        Console.WriteLine("Lista atualizada: ");
+                        Console.WriteLine("## LISTA ATUALIZADA ##: ");
                         Console.WriteLine();
                         MostrarContas(contas);
                         MenuAnterior();
                         break;
 
                     case 3:
-                        Console.WriteLine("Opção [3]: ");
+                        Console.WriteLine();
+                        Console.WriteLine("--------------- T O D A S  AS  C O N T A S ---------------");
+                        Console.WriteLine();
                         MostrarContas(contas);
                         MenuAnterior();
                         break;
                     case 4:
-                        Console.WriteLine("Opção [4]: ");
+                        Console.WriteLine();
+                        Console.WriteLine("--------------- D E T A L H E S  DA  C O N T A ---------------");
+                        Console.WriteLine();
                         DetalhesDaConta(contas);
                         MenuAnterior();
                         break;
                     case 5:
-                        Console.WriteLine("Opção [5]: ");
+                        Console.WriteLine();
+                        Console.WriteLine("--------------- T O T A L  NO  B A N C O ---------------");
+                        Console.WriteLine();
                         Console.WriteLine($"Total armazenado no banco: R${TotalNoBanco(contas):F2}");
                         MenuAnterior();
                         break;
@@ -58,6 +68,7 @@ namespace ByteBank
                         do
                         {
                             Console.Clear();
+                            Console.WriteLine();
                             Console.WriteLine("---------- C O N T A  L O G A D A ----------");
                             Console.WriteLine();
                             Console.WriteLine(contaLogada);
@@ -74,19 +85,22 @@ namespace ByteBank
                             switch (option)
                             {
                                 case 1:
-                                    Console.WriteLine("Depósito: ");
+                                    Console.WriteLine("---------- D E P Ó S I T O ----------");
+                                    Console.WriteLine();
                                     Depositando(contaLogada);
                                     Console.WriteLine("Digite qualquer tecla para fazer outra transação... ");
                                     Console.ReadKey();
                                     break;
                                 case 2:
-                                    Console.WriteLine("Saque: ");
+                                    Console.WriteLine("---------- S A Q U E ----------");
+                                    Console.WriteLine();
                                     Sacando(contaLogada);
                                     Console.WriteLine("Digite qualquer tecla para fazer outra transação... ");
                                     Console.ReadKey();
                                     break;
                                 case 3:
-                                    Console.WriteLine("Transferência: ");
+                                    Console.WriteLine("---------- T R A N S F E R Ê N C I A ----------");
+                                    Console.WriteLine();
                                     Transferindo(contas, contaLogada);
                                     Console.WriteLine("Digite qualquer tecla para fazer outra transação... ");
                                     Console.ReadKey();
@@ -113,6 +127,9 @@ namespace ByteBank
 
         static void ShowMenu()
         {
+            Console.WriteLine();
+            Console.WriteLine("--------------- B Y T E B A N K ---------------");
+            Console.WriteLine();
             Console.WriteLine("[1] - Inserir nova conta");
             Console.WriteLine("[2] - Deletar uma conta");
             Console.WriteLine("[3] - Listar contas registradas");
@@ -253,6 +270,7 @@ namespace ByteBank
             double valor = double.Parse(Console.ReadLine());
             contaLogada.Deposito(valor);
             Console.WriteLine($"Depósito de R${valor:F2} efetuado com sucesso para {contaLogada.Titular}! ");
+            Console.WriteLine();
         }
 
         static void Sacando(Conta contaLogada)
@@ -261,6 +279,7 @@ namespace ByteBank
             double valor = double.Parse(Console.ReadLine());
             contaLogada.Saque(valor);
             Console.WriteLine($"Saque de R${valor:F2} efetuado com sucesso de {contaLogada.Titular}");
+            Console.WriteLine();
         }
 
         static void Transferindo(List<Conta> contas, Conta contaLogada)
@@ -281,30 +300,33 @@ namespace ByteBank
                 Console.Write("Conta inválida, digite novamente o número da conta: #");
                 procurarConta = int.Parse(Console.ReadLine());
                 contaDestino = contas.Find(x => x.NumConta == procurarConta);
+                Console.WriteLine();
             }
             while (contaDestino == contaOrigem)
             {
                 Console.Write("A Conta de destino não pode ser a mesma da origem.\nDigite novamente o número da conta: #");
                 procurarConta = int.Parse(Console.ReadLine());
                 contaDestino = contas.Find(x => x.NumConta == procurarConta);
+                Console.WriteLine();
                 if (contaDestino == null)
                 {
                     Console.Write("Conta inválida, digite novamente o número da conta: #");
                     procurarConta = int.Parse(Console.ReadLine());
                     contaDestino = contas.Find(x => x.NumConta == procurarConta);
+                    Console.WriteLine();
                 }
             }
             Console.Write("Digite o valor: R$");
             double valorTransferencia = double.Parse(Console.ReadLine());
             contaDestino.Transferencia(contaOrigem, contaDestino, valorTransferencia);
             Console.WriteLine();
-            Console.WriteLine("Transferência realizada com sucesso!");
+            Console.WriteLine("----- C O M P R O V A N T E  DE  T R A N S F E R Ê N C I A -----");
             Console.WriteLine();
-            Console.WriteLine($"CONTA ORIGEM: Número #{contaOrigem.NumConta}\nTitular: {contaOrigem.Titular}");
+            Console.WriteLine($"----- VALOR ----- \nR${valorTransferencia:F2}");
             Console.WriteLine();
-            Console.WriteLine($"CONTA DESTINO: Número #{contaDestino.NumConta}\nTitular: {contaDestino.Titular}");
+            Console.WriteLine($"----- CONTA ORIGEM ----- \nNúmero #{contaOrigem.NumConta}\nTitular: {contaOrigem.Titular}");
             Console.WriteLine();
-            Console.WriteLine($"VALOR: {valorTransferencia:F2}");
+            Console.WriteLine($"----- CONTA DESTINO----- \nNúmero #{contaDestino.NumConta}\nTitular: {contaDestino.Titular}");
             Console.WriteLine();
         }
 
