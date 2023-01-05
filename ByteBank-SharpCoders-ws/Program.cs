@@ -6,21 +6,21 @@ namespace ByteBank
     {
         static void Main(string[] args)
         {
-            int option;
+            int opcao;
             List<Conta> contas = new List<Conta>();
 
             do
             {
                 Console.Clear();
-                ShowMenu();
-                option = int.Parse(Console.ReadLine());
-                while (option > 6)
+                MostrarMenu();
+                opcao = int.Parse(Console.ReadLine());
+                while (opcao > 6)
                 {
                     Console.Write("Opção inválida. Digite novamente: ");
-                    option = int.Parse(Console.ReadLine());
+                    opcao = int.Parse(Console.ReadLine());
                 }
                 Console.Clear();
-                switch (option)
+                switch (opcao)
                 {
                     case 1:
                         Console.WriteLine();
@@ -74,15 +74,15 @@ namespace ByteBank
                             Console.WriteLine(contaLogada);
                             Console.WriteLine($"O que vamos fazer hoje, {contaLogada.Titular}?");
                             Console.WriteLine();
-                            ShowMenuSecundario();
-                            option = int.Parse(Console.ReadLine());
-                            while (option > 4)
+                            MostrarMenuSecundario();
+                            opcao = int.Parse(Console.ReadLine());
+                            while (opcao > 4)
                             {
                                 Console.Write("Opção inválida, digite novamente: ");
-                                option = int.Parse(Console.ReadLine());
+                                opcao = int.Parse(Console.ReadLine());
                             }
                             Console.WriteLine();
-                            switch (option)
+                            switch (opcao)
                             {
                                 case 1:
                                     Console.WriteLine("---------- D E P Ó S I T O ----------");
@@ -107,13 +107,13 @@ namespace ByteBank
                                     break;
                             }
 
-                        } while (option != 4);
+                        } while (opcao != 4);
                         Console.WriteLine("--------------- V O C Ê  D E S L O G O U --------------");
                         Console.WriteLine("Digite qualquer tecla para voltar ao menu principal...");
                         Console.ReadKey();
                         break;
                 }
-            } while (option != 0);
+            } while (opcao != 0);
             Console.WriteLine("Obrigado por utilizar o ByteBank! Até logo!");
         }
 
@@ -125,7 +125,7 @@ namespace ByteBank
             Console.ReadKey();
         }
 
-        static void ShowMenu()
+        static void MostrarMenu()
         {
             Console.WriteLine();
             Console.WriteLine("--------------- B Y T E B A N K ---------------");
@@ -254,7 +254,7 @@ namespace ByteBank
             return c; // Retorna a conta que o usuário se logou. 
         }
 
-        static void ShowMenuSecundario()
+        static void MostrarMenuSecundario()
         {
             Console.WriteLine("Opção [6]: ");
             Console.WriteLine("[1] - Depósito");
